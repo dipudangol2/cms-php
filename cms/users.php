@@ -5,7 +5,19 @@ include("includes/functions.php");
 secure();
 include("includes/header.php");
 
+if (isset($_GET['delete'])) {
 
+    if ($stm = $connect->prepare("DELETE FROM users WHERE id = ?")) {
+        $stm->bind_param("i", $_GET['delete']);
+        $stm->execute();
+        set_message(sprintf("User %d sucessfully deleted!", $_GET['delete']));
+        header("Location:" . base_url() . "users.php");
+        $stm->close();
+        die();
+    } else {
+        echo "Error: Couldn't delete user!";
+    }
+}
 if ($stm = $connect->prepare("SELECT * FROM users")) {
     $stm->execute();
 
@@ -45,7 +57,7 @@ if ($stm = $connect->prepare("SELECT * FROM users")) {
                             </td>
                             <td>
                                 <a href="<?php echo $base_path; ?>user_edit.php?id=<?php echo $record['id']; ?>">Edit</a>|
-                                <a href="<?php echo $base_path; ?>user.php?delete=<?php echo $record['id']; ?>">Delete</a>
+                                <a href="<?php echo $base_path; ?>users.php?delete=<?php echo $record['id']; ?>">Delete</a>
                             </td>
                         </tr>
                     <?php }
