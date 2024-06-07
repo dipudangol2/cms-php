@@ -14,13 +14,14 @@ if (isset($_POST['email'])) {
         $stm->execute();
 
         $result = $stm->get_result();
-        $user = $result->fetch_assoc();
+        $post = $result->fetch_assoc();
 
-        if ($user) {
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['username'] = $user['username'];
+        if ($post) {
+            $_SESSION['id'] = $post['id'];
+            $_SESSION['email'] = $post['email'];
+            $_SESSION['username'] = $post['username'];
             set_message(sprintf("Hello %s!", $_SESSION['username']));
+            
             header("Location:" . base_url() . "dashboard.php");
             die();
         }

@@ -36,9 +36,9 @@ if (isset($_GET['id'])) {
         $stm->execute();
 
         $result = $stm->get_result();
-        $user = $result->fetch_assoc();
+        $post = $result->fetch_assoc();
 
-        if ($user) {
+        if ($post) {
 
 
 
@@ -53,13 +53,13 @@ if (isset($_GET['id'])) {
                         <form method="POST">
                             <!-- Username input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="text" id="username" name="username" class="form-control active" value="<?php echo $user['username']; ?>" />
+                                <input type="text" id="username" name="username" class="form-control active" value="<?php echo $post['username']; ?>" />
                                 <label class="form-label" for="form1Example1">Username </label>
                             </div>
 
                             <!-- Email input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="email" id="email" name="email" class="form-control active" value="<?php echo $user['email']; ?>" />
+                                <input type="email" id="email" name="email" class="form-control active" value="<?php echo $post['email']; ?>" />
                                 <label class="form-label" for="form1Example1">Email address</label>
                             </div>
 
@@ -72,8 +72,8 @@ if (isset($_GET['id'])) {
                             <!--Active selection-->
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <select name="active" class="form-select" id="active">
-                                    <option <?php echo ($user['active']) ? "selected" : ""; ?> value="1">Active</option>
-                                    <option <?php echo ($user['active']) ? "" : "selected"; ?> value="2">Inactive</option>
+                                    <option <?php echo ($post['active']) ? "selected" : ""; ?> value="1">Active</option>
+                                    <option <?php echo ($post['active']) ? "" : "selected"; ?> value="2">Inactive</option>
                                 </select>
                             </div>
                             <!-- Submit button -->

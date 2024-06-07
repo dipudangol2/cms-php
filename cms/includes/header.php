@@ -1,5 +1,6 @@
 <?php
 $base_path = base_url();
+global $option;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,18 @@ $base_path = base_url();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <!-- MDB -->
     <link rel="stylesheet" href="<?php echo base_url() ?>css/mdb.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css">
+    <?php
+    if (isset($pageStyles)) {
+        if (is_array($pageStyles)) {
+            foreach ($pageStyles as $style) {
+                echo '<link rel="stylesheet" href="' . base_url() . $style . '">';
+            }
+        } else {
+            echo '<link rel="stylesheet" href="' . base_url() . $pageStyles . '">';
+        }
+    }
+    ?>
 </head>
 
 <body>
@@ -38,5 +51,3 @@ $base_path = base_url();
             </div>
         </div>
     </nav>
-    <?php
-    get_message(); ?>

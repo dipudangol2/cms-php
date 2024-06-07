@@ -27,6 +27,7 @@ function secure()
 {
     if (!isset($_SESSION['id'])) {
         set_message("You are not logged in!!");
+        $_SESSION['error'] = true;
         header("Location:" . base_url());
         die();
     }
@@ -40,7 +41,9 @@ function set_message($message)
 function get_message()
 {
     if (isset($_SESSION['message'])) {
-        echo "<p>" . $_SESSION['message'] . "<p> <br>";
+        $type = isset($_SESSION['error']) ? 'error' : 'success';
+        echo "<script type='text/javascript'> showToast('" . $_SESSION['message'] . "','top right','" . $type . "')</script>";
         unset($_SESSION['message']);
+        unset($_SESSION['error']);
     }
 }

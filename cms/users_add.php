@@ -16,10 +16,10 @@ if (isset($_POST['username'])) {
         $stm->close();
         die();
 
-        if ($user) {
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['username'] = $user['username'];
+        if ($post) {
+            $_SESSION['id'] = $post['id'];
+            $_SESSION['email'] = $post['email'];
+            $_SESSION['username'] = $post['username'];
             set_message(sprintf("Hello %s!", $_SESSION['username']));
             header("Location:" . base_url() . "dashboard.php");
             die();
@@ -42,19 +42,19 @@ if (isset($_POST['username'])) {
                 <!-- Username input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="text" id="username" name="username" class="form-control" />
-                    <label class="form-label" for="form1Example1">Username </label>
+                    <label class="form-label" for="username">Username </label>
                 </div>
 
                 <!-- Email input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="email" id="email" name="email" class="form-control" />
-                    <label class="form-label" for="form1Example1">Email address</label>
+                    <label class="form-label" for="email">Email address</label>
                 </div>
 
                 <!-- Password input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                     <input type="password" id="password" name="password" class="form-control" />
-                    <label class="form-label" for="form1Example2">Password</label>
+                    <label class="form-label" for="password">Password</label>
                 </div>
 
                 <!--Active selection-->

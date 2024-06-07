@@ -5,6 +5,7 @@ include("includes/functions.php");
 secure();
 include("includes/header.php");
 var_dump($_SESSION);
+$_SESSION['$option'] = "success";
 ?>
 
 
