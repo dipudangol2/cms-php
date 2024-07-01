@@ -63,10 +63,11 @@ if ($stm = $connect->prepare("SELECT * FROM posts")) {
         </div>
 
 
+    <?php
+    } else { ?>
+        No Posts found!
+        <a href="<?php echo $base_path ?>posts_add.php">Add new Post</a>
 <?php
-    } else {
-
-        echo "No posts found!";
     }
     $stm->close();
 } else {
